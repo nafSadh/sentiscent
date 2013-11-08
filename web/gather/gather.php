@@ -18,9 +18,9 @@ function textClean($text){
 					'pyoNx32dBw9zDoJP13IM7rm6LV25gR4VZvZY3go1mH37e'    	// Access token secret
 					);
 	
-	$file = fopen("joys.txt","a");		
+	$file = fopen("sads.txt","a");		
 	
-	$emo = ':D';
+	$emo = ':(';
 	
 	for ($page = 0; $page<111; $page++){
 		if($page==0){
