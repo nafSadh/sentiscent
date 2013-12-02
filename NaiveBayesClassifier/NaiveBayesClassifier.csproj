@@ -49,7 +49,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NGramClassifier.cs" />
-    <Compile Include="Source1.cs" />
+    <Compile Include="EkwOClasses.cs" />
     <Compile Include="TrainAntTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
