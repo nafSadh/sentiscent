@@ -5,7 +5,7 @@ using System.IO;
 using System.Xml;
 using System.Net;
 
-namespace ProbabilityFunctions
+namespace Miner
 {
     public partial class Program
     {
@@ -157,7 +157,7 @@ namespace ProbabilityFunctions
                 }
 
                 taggedTweet = line;
-                
+
                 double[] P = convert(posDist(taggedTweet));
 
                 double ngcScore = NGC.score(tweet);
@@ -180,10 +180,10 @@ namespace ProbabilityFunctions
                 else if (score > +0.25) { marker = "positive"; posCnt++; }
 
                 totalScore += score;
-                
+
                 fs.WriteLine(i + "," + score + "," + marker + "," + ngcScore + "," + posScore + "," + sens + "," + tweet);
             }
-           
+
             fs.Close();
 
             Console.WriteLine("avg score = " + (totalScore / i));
@@ -193,10 +193,10 @@ namespace ProbabilityFunctions
 
             StreamWriter XMLfs = new StreamWriter(reportXMLpath, false);
 
-            XMLfs.WriteLine("<opinion entity='"+TERM+"'>");
-            XMLfs.WriteLine("  <score>"+ (totalScore/i).ToString("F2") +"</score>");
+            XMLfs.WriteLine("<opinion entity='" + TERM + "'>");
+            XMLfs.WriteLine("  <score>" + (totalScore / i).ToString("F2") + "</score>");
             XMLfs.WriteLine("  <analysis ");
-            XMLfs.WriteLine("       post-count='" + i +"'");
+            XMLfs.WriteLine("       post-count='" + i + "'");
             XMLfs.WriteLine("       percent-positive='" + (((double)posCnt) * 100 / i).ToString("F2") + "'");
             XMLfs.WriteLine("       percent-negative='" + (((double)negCnt) * 100 / i).ToString("F2") + "'" + " />");
             XMLfs.WriteLine("</opinion>");
@@ -217,27 +217,27 @@ namespace ProbabilityFunctions
 
         static void Main(string[] args)
         {
-        //    DataTable table = new DataTable();
-        //    table.Columns.Add("Sex");
-        //    table.Columns.Add("Height", typeof(double));
-        //    table.Columns.Add("Weight", typeof(double));
-        //    table.Columns.Add("FootSize", typeof(double));
+            //    DataTable table = new DataTable();
+            //    table.Columns.Add("Sex");
+            //    table.Columns.Add("Height", typeof(double));
+            //    table.Columns.Add("Weight", typeof(double));
+            //    table.Columns.Add("FootSize", typeof(double));
 
-        //    //training data.
-        //    table.Rows.Add("male", 6, 180, 12);
-        //    table.Rows.Add("male", 5.92, 190, 11);
-        //    table.Rows.Add("male", 5.58, 170, 12);
-        //    table.Rows.Add("male", 5.92, 165, 10);
+            //    //training data.
+            //    table.Rows.Add("male", 6, 180, 12);
+            //    table.Rows.Add("male", 5.92, 190, 11);
+            //    table.Rows.Add("male", 5.58, 170, 12);
+            //    table.Rows.Add("male", 5.92, 165, 10);
 
-        //    table.Rows.Add("female", 5, 100, 6);
-        //    table.Rows.Add("female", 5.5, 150, 8);
-        //    table.Rows.Add("female", 5.42, 130, 7);
-        //    table.Rows.Add("female", 5.75, 150, 9);
+            //    table.Rows.Add("female", 5, 100, 6);
+            //    table.Rows.Add("female", 5.5, 150, 8);
+            //    table.Rows.Add("female", 5.42, 130, 7);
+            //    table.Rows.Add("female", 5.75, 150, 9);
 
-        //    table.Rows.Add("transgender", 4, 200, 5);
-        //    table.Rows.Add("transgender", 4.10, 150, 8);
-        //    table.Rows.Add("transgender", 5.42, 190, 7);
-        //    table.Rows.Add("transgender", 5.50, 150, 9);
+            //    table.Rows.Add("transgender", 4, 200, 5);
+            //    table.Rows.Add("transgender", 4.10, 150, 8);
+            //    table.Rows.Add("transgender", 5.42, 190, 7);
+            //    table.Rows.Add("transgender", 5.50, 150, 9);
 
 
             //Classifier classifier = new Classifier();
@@ -280,7 +280,7 @@ namespace ProbabilityFunctions
             //NGCTrain("sads.txt", "joys.txt", "obj.txt", 10000);
 
             //NGCTest("test.txt", "NGC.test.repo.csv", 10000);
-            
+
             //BothTest("test.vcb-labelled", "NGC+POS.test.report.csv", 10000);
 
             /******* EkwOG *****************/
@@ -294,7 +294,7 @@ namespace ProbabilityFunctions
             //EkwOA.genEkwBigraph("TEkwP_small.xml");
             EkwOA.genEkwBigraph("TEkwP_sample.xml");
 
-            EkwOA.genEEgraph("sample",350,2);
+            EkwOA.genEEgraph("sample", 350, 2);
 
             //OpinGram("bankrupt");
 
