@@ -6,7 +6,7 @@ using System.Xml;
 using System.Net;
 
 
-namespace ProbabilityFunctions
+namespace Miner
 {
     class EkwOAnalyze
     {

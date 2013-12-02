@@ -5,7 +5,7 @@ using System.IO;
 using System.Xml;
 using System.Net;
 
-namespace ProbabilityFunctions
+namespace Miner
 {
     public class Meta
     {
