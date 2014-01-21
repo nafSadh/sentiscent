@@ -105,13 +105,21 @@ namespace Miner
             count = 0;
         }
 
+        public static string[] stopWords = { "i", "you", "and", "the", "me", "he", "she", "they", ",", "rt" };
         public static string[] NGramify(string line, int n=2)
         {
             List<string> ngrams = new List<string>();
 
             //clean
             char[] trimchars = {','};
-            line = line.Trim(trimchars).Trim();
+            line = line.ToLower().Trim(trimchars).Trim();
+            line = EkwOAnalyze.CleanWord(line);
+
+            //notStopWord
+            foreach (string stopword in stopWords)
+            {
+                line = line.Replace(stopword, "");
+            }
 
             //neg
             line = line.Replace(" not ", "+not not+");

@@ -278,6 +278,7 @@ namespace Miner
             //ngc.recordLine("We are human being", 0);
 
             //NGCTrain("sads.txt", "joys.txt", "obj.txt", 10000);
+            //return;
 
             //NGCTest("test.txt", "NGC.test.repo.csv", 10000);
 
@@ -286,16 +287,26 @@ namespace Miner
             /******* EkwOG *****************/
             EkwOAnalyze EkwOA = new EkwOAnalyze();
 
-            //EkwOAnalyze.RemoveDupLines("sample.vcb-labelled", "sample.undup.vcb-labelled");
-
             //EkwOA.TEkwP("obj.vcb-labelled", "TEkwP_small", 111);
-            EkwOA.TEkwP("sample.undup.vcb-labelled", "TEkwP_sample", -1);
-
+            //EkwOA.TEkwP("sample.undup.vcb-labelled", "TEkwP_sample", -1);
             //EkwOA.genEkwBigraph("TEkwP_small.xml");
-            EkwOA.genEkwBigraph("TEkwP_sample.xml");
+            //EkwOA.genEkwBigraph("TEkwP_sample.xml");
+            //EkwOA.genEEgraph("sample", 350, 2);
 
-            EkwOA.genEEgraph("sample", 350, 2);
+            string basicFile = "xob/sample";
+            EkwOAnalyze.AllNounsEntity = true;
+            EkwOAnalyze.UsersEntity = true;
+            //EkwOAnalyze.RemoveDupLines(basicFile + ".vcb-labelled", basicFile + ".undup.vcb-labelled");
+            //EkwOA.TEkwP(basicFile + ".undup.vcb-labelled", basicFile + "_TEkwP", -1);
+            EkwOA.genEkwBigraph(basicFile + "_TEkwP.xml", basicFile);
+            EkwOA.genEEgraph(basicFile, 450, 2,0.35,false);
+            EkwOA.BFS(basicFile + ".E.bfs.csv");
+            EkwOA.BFS_Image(basicFile + ".png",1);
+            EkwOA.Communitize(basicFile + "_Communities.xml", 0.0, 1);
+            Console.WriteLine("final kw count: " + EkwOA.FinalKW(basicFile));
+            //EkwOA.BFS_Image(basicFile + ".All.png", -1);
 
+            //Console.WriteLine( int.MaxValue );
             //OpinGram("bankrupt");
 
             //Console.Read();
